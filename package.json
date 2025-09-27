@@ -1,0 +1,40 @@
+{
+  "name": "bananadb",
+  "version": "0.1.0",
+  "description": "🍌 BananaDB - A lightweight JSON database and REST API mock server (json-server clone)",
+  "type": "module",
+  "bin": {
+    "bananadb": "./bin/cli.js"
+  },
+  "keywords": [
+    "mock",
+    "database",
+    "json-server",
+    "testing",
+    "api",
+    "rest"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/bananadb.git"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "chokidar": "^3.6.0",
+    "commander": "^11.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "figlet": "^1.9.3",
+    "lowdb": "^7.0.1",
+    "nanoid": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "node bin/cli.js --db db.json --port 4000",
+    "start": "node bin/cli.js --db db.json --port 3000"
+  }
+}

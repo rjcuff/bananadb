@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Hello Banana",
+      "author": "Ryan"
+    },
+    {
+      "id": 2,
+      "title": "BananaDB Rocks",
+      "author": "Luke"
+    },
+    {
+      "id": "AOP9Ws",
+      "title": "Banana Peel Tricks",
+      "author": "Ryan"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 1,
+      "body": "Great post!"
+    }
+  ]
+}
