@@ -1,7 +1,7 @@
 {
   "name": "bananadb",
   "version": "0.1.0",
-  "description": "🍌 BananaDB - A lightweight JSON database and REST API mock server (json-server clone)",
+  "description": "BananaDB - A lightweight JSON database and REST API mock server (json-server alternative).",
   "type": "module",
   "bin": {
     "bananadb": "./bin/cli.js"
@@ -16,9 +16,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/bananadb.git"
+    "url": "https://github.com/chafed-rc/bananadb.git"
   },
-  "author": "Your Name",
+  "homepage": "https://github.com/chafed-rc/bananadb#readme",
+  "bugs": {
+    "url": "https://github.com/chafed-rc/bananadb/issues"
+  },
+  "author": "Ryan Cuff",
   "license": "MIT",
   "engines": {
     "node": ">=18"
