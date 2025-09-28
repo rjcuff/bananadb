@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import chokidar from 'chokidar';
+import portfinder from 'portfinder';
 import { LowSync } from 'lowdb';
 import { JSONFileSync } from 'lowdb/node';
 import { createRouter } from './router.js';
@@ -45,21 +46,33 @@ export function startServer({ file, port, enableCors = true }) {
   // 4) Watch the db file for changes (live reload)
   chokidar.watch(file, { ignoreInitial: true }).on('all', () => rebuild('file change'));
 
-  // 5) Start server
-  app.listen(port, () => {
-    // Big BananaDB banner 🍌
-    console.log(
-      chalk.yellow(
-        figlet.textSync('BananaDB', { horizontalLayout: 'default' })
-      )
-    );
+  // 5) Start server with auto port selection
+  portfinder.getPortPromise({ port }) 
+    .then(freePort => {
+      app.listen(freePort, () => {
+        // Big BananaDB banner 🍌
+        console.log(
+          chalk.yellow(
+            figlet.textSync('BananaDB', { horizontalLayout: 'default' })
+          )
+        );
 
-    console.log(chalk.green(`🍌 BananaDB running at:`), chalk.cyan(`http://localhost:${port}`));
-    console.log(chalk.yellow('📂 Database file:'), chalk.white(file));
-    console.log(chalk.magenta('🔌 Available endpoints:'));
-    printEndpoints(db);
-    console.log(chalk.gray('👀 Watching for changes…\n'));
-  });
+        if (freePort !== port) {
+          console.log(chalk.red(`⚠️  Port ${port} in use. Switched to ${freePort}.`));
+        }
+
+        console.log(chalk.green(`🍌 BananaDB running at:`), chalk.cyan(`http://localhost:${freePort}`));
+        console.log(chalk.yellow('📂 Database file:'), chalk.white(file));
+        console.log(chalk.magenta('🔌 Available endpoints:'));
+        printEndpoints(db);
+        console.log(chalk.gray('👀 Watching for changes…\n'));
+      });
+    })
+    .catch(err => {
+      console.error('❌ Could not find a free port:', err.message);
+      process.exit(1);
+    });
+
 
 }
 

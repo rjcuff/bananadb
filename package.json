@@ -35,7 +35,8 @@
     "express": "^4.18.2",
     "figlet": "^1.9.3",
     "lowdb": "^7.0.1",
-    "nanoid": "^5.0.0"
+    "nanoid": "^5.0.0",
+    "portfinder": "^1.0.38"
   },
   "scripts": {
     "dev": "node bin/cli.js --db db.json --port 4000",
