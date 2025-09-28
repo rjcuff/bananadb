@@ -1,7 +1,6 @@
 # 🍌 BananaDB
 
 A lightweight, zero-config **mock database & REST API server**.  
-Think **json-server**, but with a fresh peel 🍌  
 
 Spin up a fake API in seconds for **prototyping, testing, demos, or hackathons** — no setup, no hassle.  
 
